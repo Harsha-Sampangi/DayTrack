@@ -1,312 +1,292 @@
-# 📅 DayTrack — Expense & Task Tracker
+<div align="center">
+  
+# 🚀 DayTrack
+  
+**A modern, offline-first Expense & Task Tracker built for students.**
 
-> **Track. Plan. Grow.**
-> A personal productivity app built with Flutter for students to manage daily expenses, income, and tasks — all offline, fast, and beautiful.
+[![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)](https://flutter.dev/)
+[![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+</div>
 
 ---
 
-## 📸 Overview
+## 📖 Short Description
 
-DayTrack is a mobile-first personal life management application designed specifically for students. It combines an **expense tracker**, **income logger**, and **task manager** into one elegant, dark-themed app. Built offline-first using Hive, it works without an internet connection and keeps your data private on your device.
+**DayTrack** is a clean and intuitive personal life manager designed to help students track their daily expenses, manage their income, and stay on top of their tasks. With an offline-first architecture, beautiful visualizations, and robust security features (PIN/Biometric authentication), DayTrack ensures your personal data stays safe, private, and always accessible without relying on a network connection.
 
 ---
 
 ## ✨ Features
 
-### 🏠 Dashboard
-- **Welcome header** with the current date displayed prominently
-- **Today's Expense card** — live total with optional daily budget progress bar
-- **Today's Income card** — green-accented total for the day
-- **Balance card** — full-width indigo gradient card showing net balance
-- **Recent Transactions** — quick preview of latest expense entries
-- **Today's Tasks** — checkbox preview of tasks due today (up to 3 shown)
-
-### 💸 Expense Tracker
-- Add expenses with **amount**, **category**, and **optional notes**
-- **3-column emoji category grid** (Food 🍕, Shopping 🛒, Travel 🚗, College 📚, Health ❤️, Entertainment 📱, Others 💰)
-- **Filter by period** — Daily / Weekly / Monthly views
-- **Red gradient hero card** showing total spending for the selected period
-- Swipe-to-delete with undo snackbar support
-- **Spending limits** (daily & monthly) configurable from Settings with progress bar warning
-
-### 💰 Income Tracker
-- Log income with **source category** and **date**
-- **Source categories**: Part-time, Freelance, Stipend, Allowance, Other
-- **Green gradient hero card** showing monthly total
-- Progress bar showing 75% monthly goal tracking
-
-### ✅ Task Manager
-- Add tasks with a **title**, **time**, and **priority level**
-- **3 priority levels**: Low 🟢, Medium 🟡, High 🔴 — shown as glowing priority bars
-- **Circular progress ring** (SVG-style custom painter) showing completion percentage
-- Tasks grouped into **Today** and **Upcoming** sections
-- Tap to toggle complete/incomplete — completed tasks show a strikethrough
-
-### 📊 Analytics
-- **Donut pie chart** — spending breakdown by category with legend, ₹ amounts, and percentages
-- **Gradient bar chart** — weekly daily spending trend (Mon–Sun)
-- **Summary stat cards** — Average Daily Spend and Task Completion Rate
-
-### ⚙️ Settings
-- **Profile card** with user avatar
-- **Preferences** — Notifications toggle, Appearance & Language shortcuts
-- **Security** — PIN lock with 4-digit keypad + biometric authentication (fingerprint/Face ID)
-- **Spending Limits** — Set daily and monthly budget limits with dialog editors
-- **App Lock Screen** — Custom PIN pad with shake animation on wrong PIN
+- **💰 Expense & Income Tracking**: Log daily transactions, categorize them with emojis, and monitor your monthly and daily spending limits.
+- **✅ Task Management**: Stay organized with daily to-dos and upcoming tasks. Track your progress with visual indicators.
+- **📊 Analytics & Charts**: Interactive charts to visualize your cash flow and budget health.
+- **🔒 Security First**: Built-in PIN protection and biometric authentication using local auth.
+- **📴 Offline First Data**: All data is securely stored locally using Hive CE. No cloud dependencies!
+- **🔔 Reminders & Notifications**: Local push notifications to keep you reminded of your tasks.
+- **🎨 Beautiful UI**: A polished, premium design featuring glassmorphism, dynamic gradients, and smooth animations.
 
 ---
 
-## 🎨 Design System
+## 📸 Screenshots Section
 
-DayTrack uses a custom Figma-inspired dark design system:
+| Dashboard | Add Expense | Settings |
+| :---: | :---: | :---: |
+| ![Dashboard Placeholder](https://via.placeholder.com/250x500.png?text=Dashboard) | ![Add Expense Placeholder](https://via.placeholder.com/250x500.png?text=Add+Expense) | ![Settings Placeholder](https://via.placeholder.com/250x500.png?text=Settings) |
 
-| Token | Value | Usage |
-|---|---|---|
-| Background | `#0D0D0D` | App background |
-| Card | `#1A1A1A` | All card surfaces |
-| Surface Variant | `#252525` | Input fields |
-| Primary (Indigo) | `#6366F1` | Main accent, FAB, active nav |
-| Violet | `#8B5CF6` | Gradient secondary, charts |
-| Income (Emerald) | `#10B981` | Income amounts |
-| Expense (Red) | `#EF4444` | Expense amounts |
-| Warning (Amber) | `#F59E0B` | Medium priority, warnings |
-| Text Primary | `#FAFAFA` | Main body text |
-| Text Secondary | `#A0A0A0` | Labels and hints |
-| Border | `rgba(255,255,255,0.08)` | All card borders |
-
-### 🧩 UI Components
-- **Floating Glassmorphism Bottom Nav** — pill-shaped with `BackdropFilter` blur and animated active indicator
-- **Gradient FAB** — single Indigo→Violet gradient button opening an add-menu sheet
-- **Hero Cards** — gradient-tinted stat cards with icon, label, and large amount value
-- **Circular Progress Ring** — custom-painted arc with gradient stroke for task progress
-- **Custom Toggle** — animated sliding toggle for Settings rows
-- **Priority Bars** — glowing 4px vertical bars with color-coded BoxShadow per priority level
-- **Category Grid** — 3-column emoji grid with animated border highlight on selection
+*(Replace the placeholder URLs above with actual paths to your screenshots, e.g., `assets/screenshots/dashboard.png`)*
 
 ---
 
-## 🛠️ Tech Stack
+## 🎥 Demo / Preview
 
-| Layer | Technology |
-|---|---|
-| **Framework** | Flutter (Dart) — latest stable |
-| **Database** | Hive CE (Community Edition) — offline-first |
-| **State Management** | Provider |
-| **Charts** | fl_chart |
-| **Notifications** | flutter_local_notifications |
-| **Authentication** | local_auth (biometrics), flutter_secure_storage (PIN) |
-| **Localization Ready** | dart:intl, all strings in `AppStrings` |
-| **Currency** | Indian Rupee (₹) exclusively |
+*(Include a GIF or a link to a video preview of the app running)*
+
+![App Demo Placeholder](https://via.placeholder.com/600x300.png?text=App+Demo+GIF)
 
 ---
 
-## 📁 Project Structure
+## 🛠 Tech Stack
 
-```
+- **Framework**: [Flutter](https://flutter.dev/) (v3.5.3+)
+- **Language**: [Dart](https://dart.dev/)
+- **State Management**: [Provider](https://pub.dev/packages/provider)
+- **Local Database**: [Hive CE](https://pub.dev/packages/hive_ce) (Offline-first NoSQL database)
+- **Local Storage**: [Flutter Secure Storage](https://pub.dev/packages/flutter_secure_storage)
+- **UI/Charts**: [FL Chart](https://pub.dev/packages/fl_chart), Cupertino Icons
+- **Auth/Security**: [Local Auth](https://pub.dev/packages/local_auth)
+- **Notifications**: [Flutter Local Notifications](https://pub.dev/packages/flutter_local_notifications)
+
+---
+
+## 🏛 Architecture Overview
+
+DayTrack follows a structured **Feature-based & Layered Architecture** for scalability and maintainability:
+- **Core**: Contains app-wide constants, color palettes, string resources, and shared utilities.
+- **Models**: Defines the data structures (Hive TypeAdapters) for Income, Expense, Task, etc.
+- **Providers**: Manages business logic, state, and database interactions.
+- **Screens**: Houses the UI components, split by feature (Dashboard, Expense, Income, Task, Settings).
+- **Services**: Manages background services, local notifications, and biometric authentication.
+- **Widgets**: Reusable UI elements (tiles, buttons, bottom sheets).
+
+---
+
+## 📁 Folder Structure
+
+```text
 lib/
-├── main.dart                         # Entry point — Hive init, Provider setup
-├── app.dart                          # MaterialApp + AppTheme + routing
-│
+├── app.dart                   # Main App Widget & Theme Setup
+├── main.dart                  # App Entry Point
 ├── core/
-│   ├── constants/
-│   │   ├── app_colors.dart           # Full color palette + gradient helpers
-│   │   ├── app_strings.dart          # All user-facing strings (i18n-ready)
-│   │   └── app_constants.dart        # Category lists, source lists, limits
-│   ├── theme/
-│   │   └── app_theme.dart            # ThemeData — dark theme, cards, inputs
-│   └── utils/
-│       ├── date_utils.dart           # Date helpers: isToday, timeAgo, formatDate
-│       └── currency_utils.dart       # ₹ formatter
-│
-├── models/
-│   ├── expense.dart                  # Expense Hive model
-│   ├── expense.g.dart                # Generated adapter
-│   ├── income.dart                   # Income Hive model
-│   ├── income.g.dart                 # Generated adapter
-│   ├── task_item.dart                # Task Hive model
-│   ├── task_item.g.dart              # Generated adapter
-│   ├── spending_limit.dart           # SpendingLimit model
-│   └── spending_limit.g.dart         # Generated adapter
-│
-├── providers/
-│   ├── expense_provider.dart         # Expense CRUD + totals + filters
-│   ├── income_provider.dart          # Income CRUD + totals
-│   ├── task_provider.dart            # Task CRUD + completion + grouping
-│   └── settings_provider.dart        # PIN, biometric, limits
-│
-├── services/
-│   ├── hive_service.dart             # Hive box registration
-│   ├── notification_service.dart     # Local notification scheduling
-│   └── lock_service.dart             # PIN verify + biometric auth
-│
-├── screens/
-│   ├── main_shell.dart               # Bottom nav shell + FAB
-│   ├── lock_screen.dart              # PIN pad lock screen
+│   ├── constants/             # Colors, Strings, Dimensions
+│   └── utils/                 # Formatters, Helpers
+├── models/                    # Data models (Hive schemas)
+├── providers/                 # State management controllers
+├── screens/                   # UI Screens
 │   ├── dashboard/
-│   │   └── dashboard_screen.dart     # Home dashboard
 │   ├── expense/
-│   │   ├── expense_list_screen.dart  # Expense list + filter
-│   │   └── add_expense_screen.dart   # Add expense modal
 │   ├── income/
-│   │   ├── income_list_screen.dart   # Income list
-│   │   └── add_income_screen.dart    # Add income modal
 │   ├── task/
-│   │   ├── task_list_screen.dart     # Task list + progress ring
-│   │   └── add_task_screen.dart      # Add task modal
-│   ├── analytics/
-│   │   └── analytics_screen.dart     # Charts + stat cards
 │   └── settings/
-│       └── settings_screen.dart      # Settings + PIN + limits
-│
-└── widgets/
-    ├── expense_tile.dart             # Expense list item
-    ├── income_tile.dart              # Income list item
-    ├── task_tile.dart                # Task list item with priority bar
-    ├── stat_card.dart                # Gradient stat card
-    ├── pie_chart_widget.dart         # Donut chart + legend
-    ├── bar_chart_widget.dart         # Weekly gradient bar chart
-    └── category_icon.dart            # Category icon + color mapper
+├── services/                  # Notification & Auth Services
+└── widgets/                   # Reusable UI components
 ```
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Installation
 
-### Prerequisites
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Harsha-Sampangi/DayTrack.git
+   cd DayTrack
+   ```
 
-- Flutter SDK **≥ 3.5.3** — [Install Flutter](https://docs.flutter.dev/get-started/install)
-- Dart SDK **≥ 3.0**
-- Android Studio / VS Code with Flutter plugin
-- A physical device or emulator
+2. **Install dependencies:**
+   ```bash
+   flutter pub get
+   ```
 
-### 1. Clone the Project
+3. **Generate Hive Adapters:**
+   If you make changes to models, you need to run the build runner:
+   ```bash
+   dart run build_runner build -d
+   ```
+
+---
+
+## 🔑 Environment Variables
+
+Since DayTrack is an offline-first app, it **does not require** a `.env` file or external API keys by default. All data remains securely stored on the device.
+
+*(If Firebase or custom APIs are added in the future, document the `.env` requirements here).*
+
+---
+
+## 🚀 Running the App
+
+To run the app on a connected device or emulator:
 
 ```bash
-git clone <your-repository-url>
-cd DayTrack
-```
-
-### 2. Install Dependencies
-
-```bash
-flutter pub get
-```
-
-### 3. Generate Hive Adapters
-
-```bash
-dart run build_runner build --delete-conflicting-outputs
-```
-
-> This generates the `.g.dart` adapter files required by Hive to persist your models.
-
-### 4. Run the App
-
-```bash
-# Run on connected Android/iOS device
 flutter run
-
-# Run on Chrome (web preview)
-flutter run -d chrome
-
-# Run on macOS desktop
-flutter run -d macos
 ```
 
 ---
 
-## 📱 Supported Platforms
+## 🏗 Build Instructions
 
-| Platform | Status |
-|---|---|
-| Android | ✅ Fully supported |
-| iOS | ✅ Fully supported |
-| Web (Chrome) | ✅ Supported (preview mode) |
-| macOS | ✅ Supported |
+### APK / IPA Generation
 
----
-
-## 🗃️ Data Storage
-
-All data is stored **100% locally** on the device using [Hive CE](https://pub.dev/packages/hive_ce):
-
-| Box Name | Contents |
-|---|---|
-| `expenses` | Expense entries (amount, category, date, notes) |
-| `incomes` | Income entries (amount, source, date) |
-| `tasks` | Task items (title, time, priority, completion state) |
-| `settings` | Spending limits, PIN hash, lock preference |
-
-> No internet connection is required. No data leaves your device.
-
----
-
-## 🔐 Security
-
-- **4-digit PIN Lock** — hashed and stored in `FlutterSecureStorage` (encrypted on-device)
-- **Biometric Auth** — Fingerprint / Face ID via `local_auth`, shown automatically if available
-- **PIN shake animation** — visual feedback on incorrect PIN entry
-- **Change PIN** — verify old PIN before setting a new one
-
----
-
-## 📦 Key Dependencies
-
-```yaml
-hive_ce: ^2.5.0              # Offline database
-hive_ce_flutter: ^2.1.0      # Flutter Hive integration
-provider: ^6.1.2             # State management
-fl_chart: ^0.69.0            # Charts
-flutter_local_notifications: ^18.0.0  # Push notifications
-local_auth: ^2.3.0           # Biometrics
-flutter_secure_storage: ^9.2.2       # Encrypted secure storage
-intl: ^0.19.0                # Date/number formatting
-uuid: ^4.5.1                 # Unique IDs for entries
-```
-
----
-
-## 🏗️ Build for Release
-
-### Android APK
+**For Android (APK):**
 ```bash
 flutter build apk --release
-# Output: build/app/outputs/flutter-apk/app-release.apk
+```
+*The APK will be generated at `build/app/outputs/flutter-apk/app-release.apk`*
+
+**For Android (App Bundle - AAB for Play Store):**
+```bash
+flutter build appbundle --release
 ```
 
-### iOS (requires macOS + Xcode)
+**For iOS (IPA):**
 ```bash
-flutter build ios --release
+flutter build ipa --release
+```
+*Note: Requires macOS and Xcode. Open the workspace in Xcode to configure signing profiles.*
+
+---
+
+## 📡 API Configuration
+
+This application is **Offline-First**. No external API configuration is required.
+If you plan to add cloud syncing in the future, configure the endpoints in the `lib/services/api_service.dart` (to be created).
+
+---
+
+## 🔐 Permissions Required
+
+### Android (`android/app/src/main/AndroidManifest.xml`)
+- `USE_BIOMETRIC`: For PIN/Fingerprint unlocking.
+- `RECEIVE_BOOT_COMPLETED`: To reschedule local notifications after device reboot.
+- `SCHEDULE_EXACT_ALARM`: For precise task reminders (Android 12+).
+- `POST_NOTIFICATIONS`: For local push notifications (Android 13+).
+
+### iOS (`ios/Runner/Info.plist`)
+- `NSFaceIDUsageDescription`: For biometric authentication.
+- Notifications permission config.
+
+---
+
+## 🧠 State Management
+
+DayTrack uses **[Provider](https://pub.dev/packages/provider)** for state management.
+We inject `ExpenseProvider`, `IncomeProvider`, `TaskProvider`, and `SettingsProvider` at the root of the app (`app.dart`) so they can be consumed by any widget in the tree using `Consumer` or `context.read()`.
+
+---
+
+## 📚 Third-Party Libraries
+
+- **`hive_ce`**: Lightning-fast, lightweight NoSQL database.
+- **`provider`**: Simple and robust state management.
+- **`fl_chart`**: Used for rendering interactive pie and line charts.
+- **`local_auth`**: Handles system-level biometrics (Face ID / Touch ID).
+- **`flutter_local_notifications`**: Schedules and displays offline task reminders.
+- **`flutter_secure_storage`**: Stores sensitive data like user PINs securely.
+
+---
+
+## 🧪 Testing
+
+To run the unit and widget tests:
+
+```bash
+flutter test
 ```
 
-### Web
-```bash
-flutter build web --release
-# Output: build/web/
-```
+---
+
+## 🚀 Deployment
+
+### Android Play Store
+1. Update version number in `pubspec.yaml`.
+2. Ensure you have a release keystore configured in `android/key.properties`.
+3. Run `flutter build appbundle`.
+4. Upload the generated `.aab` to the Google Play Console.
+
+### iOS App Store
+1. Update version number in `pubspec.yaml`.
+2. Open `ios/Runner.xcworkspace` in Xcode.
+3. Select your development team and provision profiles.
+4. Run Product > Archive and distribute to App Store Connect.
+
+---
+
+## 🔄 CI/CD (Optional)
+
+*(Placeholder for GitHub Actions or Codemagic configuration)*
+- You can set up a GitHub Actions workflow `.github/workflows/flutter.yml` to automatically run tests and build release APKs on every push to the `main` branch.
+
+---
+
+## ⚡ Performance Optimizations
+
+- **Constant Constructors**: `const` widgets are heavily utilized to prevent unnecessary widget rebuilds.
+- **Efficient State**: Using `Consumer` selectively wraps only the parts of the UI that need to rebuild when state changes.
+- **Lazy Loading**: `ListView.builder` is used for transaction and task lists to ensure smooth scrolling even with thousands of entries.
+- **Hive Database**: Hive performs entirely in memory and flushes to disk, making read/write operations exceptionally fast.
+
+---
+
+## 🛡 Security Practices
+
+- **Secure Storage**: The app uses `flutter_secure_storage` to securely persist user settings, including the hashed App PIN.
+- **Local Auth Integration**: Users can optionally enable biometric locks to prevent unauthorized access to financial data.
+- **No Cloud Data Leaks**: Since all data is stored via `Hive` on the local file system, data privacy is guaranteed.
+
+---
+
+## 🐛 Known Issues
+
+- *(Add any currently tracked issues or bugs here)*
+- Notification permissions might require manual approval on certain custom Android OS skins (e.g., MIUI, ColorOS).
+
+---
+
+## 🗺 Future Improvements / Roadmap
+
+- [ ] **Cloud Syncing**: Add Firebase or Supabase to sync data across multiple devices.
+- [ ] **Data Export**: Allow users to export expenses as a CSV or PDF report.
+- [ ] **Dark Mode Toggle**: Implement a manual toggle for light/dark themes.
+- [ ] **Multi-currency Support**: Allow switching between different currencies dynamically.
 
 ---
 
 ## 🤝 Contributing
 
-This project is for personal/educational use. Feel free to fork and customise it for your own needs.
+Contributions are welcome! Here's how you can help:
 
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -m 'Add my feature'`
-4. Push to the branch: `git push origin feature/my-feature`
-5. Open a Pull Request
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-## 👤 Author
+## 👤 Author / Contact Information
 
-Built with ❤️ by a student, for students.
+**Harsha Sampangi**
+- GitHub: [@Harsha-Sampangi](https://github.com/Harsha-Sampangi)
+- Email: *(your-email@example.com)*
+- LinkedIn: *(Link to your profile)*
 
-**DayTrack** — *Because every rupee and every minute counts.*
+---
+*If you find this project helpful, please consider giving it a ⭐!*
