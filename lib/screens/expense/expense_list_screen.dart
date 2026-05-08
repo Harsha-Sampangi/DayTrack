@@ -167,15 +167,15 @@ class _ExpenseListScreenState extends State<ExpenseListScreen> {
 
               // ── Expense List ──────────────────────────────────────────
               if (provider.expenses.isEmpty)
-                Padding(
-                  padding: const EdgeInsets.all(24),
+                const Padding(
+                  padding: EdgeInsets.all(24),
                   child: Center(
                     child: Column(
                       children: [
-                        const Icon(Icons.receipt_long_rounded,
+                        Icon(Icons.receipt_long_rounded,
                             size: 64, color: AppColors.textHint),
-                        const SizedBox(height: 12),
-                        const Text(
+                        SizedBox(height: 12),
+                        Text(
                           'No expenses yet',
                           style: TextStyle(color: AppColors.textSecondary),
                         ),

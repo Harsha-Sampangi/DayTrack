@@ -19,7 +19,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   final _amountController = TextEditingController();
   final _notesController = TextEditingController();
   String _selectedCategory = AppConstants.expenseCategories.first;
-  DateTime _selectedDate = DateTime.now();
+  final DateTime _selectedDate = DateTime.now();
 
   static const _categoryEmojis = {
     'Food': '☕',
@@ -111,7 +111,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                 ),
                 decoration: InputDecoration(
                   prefixText: '₹ ',
-                  prefixStyle: TextStyle(
+                  prefixStyle: const TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.w700,
                     color: AppColors.textSecondary,

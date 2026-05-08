@@ -134,15 +134,15 @@ class IncomeListScreen extends StatelessWidget {
 
               // ── Income List ───────────────────────────────────────────
               if (provider.incomes.isEmpty)
-                Padding(
-                  padding: const EdgeInsets.all(48),
+                const Padding(
+                  padding: EdgeInsets.all(48),
                   child: Center(
                     child: Column(
                       children: [
-                        const Icon(Icons.account_balance_wallet_outlined,
+                        Icon(Icons.account_balance_wallet_outlined,
                             size: 64, color: AppColors.textHint),
-                        const SizedBox(height: 12),
-                        const Text('No income entries yet',
+                        SizedBox(height: 12),
+                        Text('No income entries yet',
                             style: TextStyle(color: AppColors.textSecondary)),
                       ],
                     ),

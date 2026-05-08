@@ -56,28 +56,28 @@ class SettingsScreen extends StatelessWidget {
                           child: Text('👤', style: TextStyle(fontSize: 28)),
                         ),
                       ),
-                      const SizedBox(width: 16),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Student',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textPrimary,
+                        const SizedBox(width: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              settings.userName,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.textPrimary,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 2),
-                          Text(
-                            'DayTrack User',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: AppColors.textSecondary,
+                            const SizedBox(height: 2),
+                            const Text(
+                              'DayTrack User',
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: AppColors.textSecondary,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
                     ],
                   ),
                 ),
@@ -85,7 +85,14 @@ class SettingsScreen extends StatelessWidget {
               const SizedBox(height: 24),
 
               // ── Preferences ───────────────────────────────────────────
-              _SectionLabel(title: 'Preferences'),
+              const _SectionLabel(title: 'Preferences'),
+              _SettingRow(
+                icon: Icons.person_outline_rounded,
+                label: 'User Name',
+                trailingText: settings.userName,
+                hasChevron: true,
+                onTap: () => _showNameEditor(context, settings),
+              ),
               _SettingRow(
                 icon: Icons.notifications_outlined,
                 label: 'Notifications',
@@ -93,12 +100,12 @@ class SettingsScreen extends StatelessWidget {
                 toggleValue: true,
                 onToggleChanged: (_) {},
               ),
-              _SettingRow(
+              const _SettingRow(
                 icon: Icons.palette_outlined,
                 label: 'Appearance',
                 hasChevron: true,
               ),
-              _SettingRow(
+              const _SettingRow(
                 icon: Icons.language_rounded,
                 label: 'Language',
                 trailingText: 'English',
@@ -107,7 +114,7 @@ class SettingsScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               // ── Security ──────────────────────────────────────────────
-              _SectionLabel(title: 'Security'),
+              const _SectionLabel(title: 'Security'),
               _SettingRow(
                 icon: Icons.lock_outline_rounded,
                 label: AppStrings.enablePin,
@@ -131,7 +138,7 @@ class SettingsScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               // ── Spending Limits ───────────────────────────────────────
-              _SectionLabel(title: AppStrings.spendingLimits),
+              const _SectionLabel(title: AppStrings.spendingLimits),
               _SettingRow(
                 icon: Icons.account_balance_wallet_outlined,
                 label: AppStrings.dailyLimit,
@@ -157,8 +164,8 @@ class SettingsScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               // ── Support ───────────────────────────────────────────────
-              _SectionLabel(title: 'Support'),
-              _SettingRow(
+              const _SectionLabel(title: 'Support'),
+              const _SettingRow(
                 icon: Icons.help_outline_rounded,
                 label: 'Help Center',
                 hasChevron: true,
@@ -267,6 +274,41 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
+  void _showNameEditor(BuildContext context, SettingsProvider settings) {
+    final controller = TextEditingController(text: settings.userName);
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Set User Name'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          decoration: const InputDecoration(
+            hintText: 'Enter your name',
+          ),
+        ),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text(AppStrings.cancel)),
+          ElevatedButton(
+            onPressed: () {
+              if (controller.text.trim().isNotEmpty) {
+                settings.setUserName(controller.text.trim());
+                Navigator.pop(ctx);
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+            ),
+            child: const Text(AppStrings.save),
+          ),
+        ],
+      ),
+    );
+  }
+
   void _showLimitEditor(BuildContext context, String label, double current,
       ValueChanged<double> onChanged) {
     final controller = TextEditingController(
@@ -335,7 +377,6 @@ class _SettingRow extends StatelessWidget {
   final ValueChanged<bool>? onToggleChanged;
   final bool hasChevron;
   final String? trailingText;
-  final bool isDanger;
   final VoidCallback? onTap;
 
   const _SettingRow({
@@ -346,7 +387,6 @@ class _SettingRow extends StatelessWidget {
     this.onToggleChanged,
     this.hasChevron = false,
     this.trailingText,
-    this.isDanger = false,
     this.onTap,
   });
 
@@ -369,24 +409,20 @@ class _SettingRow extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: isDanger
-                      ? AppColors.expense.withOpacity(0.1)
-                      : AppColors.primary.withOpacity(0.1),
+                  color: AppColors.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(icon,
                     size: 20,
-                    color: isDanger ? AppColors.expense : AppColors.primary),
+                    color: AppColors.primary),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
                   label,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
-                    color: isDanger
-                        ? AppColors.expense
-                        : AppColors.textPrimary,
+                    color: AppColors.textPrimary,
                   ),
                 ),
               ),

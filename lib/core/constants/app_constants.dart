@@ -50,4 +50,5 @@ class AppConstants {
 
   // ── Settings Keys (Hive) ──────────────────────────────────────────────
   static const String spendingLimitKey = 'spending_limit';
+  static const String userNameKey = 'user_name';
 }

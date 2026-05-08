@@ -97,7 +97,7 @@ class _AddIncomeScreenState extends State<AddIncomeScreen> {
                 ),
                 decoration: InputDecoration(
                   prefixText: '₹ ',
-                  prefixStyle: TextStyle(
+                  prefixStyle: const TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.w700,
                     color: AppColors.textSecondary,

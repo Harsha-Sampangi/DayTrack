@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../models/spending_limit.dart';
+import '../core/constants/app_constants.dart';
 import '../services/hive_service.dart';
 import '../services/lock_service.dart';
 
@@ -9,6 +10,7 @@ class SettingsProvider extends ChangeNotifier {
   bool _isLockEnabled = false;
   bool _isPinSet = false;
   bool _isBiometricAvailable = false;
+  String _userName = 'Student';
 
   // ── Getters ──────────────────────────────────────────────────────────
 
@@ -16,6 +18,7 @@ class SettingsProvider extends ChangeNotifier {
   bool get isLockEnabled => _isLockEnabled;
   bool get isPinSet => _isPinSet;
   bool get isBiometricAvailable => _isBiometricAvailable;
+  String get userName => _userName;
 
   // ── Initialization ───────────────────────────────────────────────────
 
@@ -25,6 +28,7 @@ class SettingsProvider extends ChangeNotifier {
     _isLockEnabled = await LockService.isLockEnabled();
     _isPinSet = await LockService.isPinSet();
     _isBiometricAvailable = await LockService.isBiometricAvailable();
+    _userName = HiveService.settingsBox.get(AppConstants.userNameKey, defaultValue: 'Student') as String;
     notifyListeners();
   }
 
@@ -88,5 +92,14 @@ class SettingsProvider extends ChangeNotifier {
   /// Attempt biometric authentication.
   Future<bool> authenticateBiometric() async {
     return await LockService.authenticateWithBiometrics();
+  }
+
+  // ── Profile ──────────────────────────────────────────────────────────
+
+  /// Update the user's name.
+  Future<void> setUserName(String name) async {
+    _userName = name;
+    await HiveService.settingsBox.put(AppConstants.userNameKey, name);
+    notifyListeners();
   }
 }

@@ -5,6 +5,7 @@ import 'package:personal_life_manager/core/utils/currency_utils.dart';
 import 'package:personal_life_manager/providers/expense_provider.dart';
 import 'package:personal_life_manager/providers/income_provider.dart';
 import 'package:personal_life_manager/providers/task_provider.dart';
+import 'package:personal_life_manager/providers/settings_provider.dart';
 import 'package:personal_life_manager/widgets/expense_tile.dart';
 
 /// Dashboard matching the Figma design:
@@ -18,8 +19,8 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer3<ExpenseProvider, IncomeProvider, TaskProvider>(
-      builder: (context, expenses, income, tasks, _) {
+    return Consumer4<ExpenseProvider, IncomeProvider, TaskProvider, SettingsProvider>(
+      builder: (context, expenses, income, tasks, settings, _) {
         final balance = income.todayTotal - expenses.todayTotal;
 
         return SingleChildScrollView(
@@ -34,10 +35,10 @@ class DashboardScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Welcome back',
-                      style: TextStyle(
-                        fontSize: 32,
+                    Text(
+                      '${_getGreeting()}, ${settings.userName}',
+                      style: const TextStyle(
+                        fontSize: 28, // Reduced slightly to fit name better
                         fontWeight: FontWeight.w700,
                         color: AppColors.textPrimary,
                         letterSpacing: -0.5,
@@ -148,7 +149,7 @@ class DashboardScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Icon(
+                      const Icon(
                         Icons.account_balance_wallet_rounded,
                         color: AppColors.primary,
                         size: 20,
@@ -159,12 +160,12 @@ class DashboardScreen extends StatelessWidget {
               ),
 
               // ── Recent Transactions ────────────────────────────────────
-              Padding(
-                padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(24, 24, 24, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Recent Transactions',
                       style: TextStyle(
                         fontSize: 18,
@@ -266,6 +267,17 @@ class DashboardScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  String _getGreeting() {
+    final hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Good Morning';
+    } else if (hour < 17) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
+    }
   }
 
   String _formattedDate() {

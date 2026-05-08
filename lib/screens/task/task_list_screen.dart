@@ -136,9 +136,9 @@ class TaskListScreen extends StatelessWidget {
 
               // ── Upcoming Section ──────────────────────────────────────
               if (upcoming.isNotEmpty) ...[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 16, 24, 12),
-                  child: const Text(
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(24, 16, 24, 12),
+                  child: Text(
                     'Upcoming',
                     style: TextStyle(
                       fontSize: 18,
@@ -159,15 +159,15 @@ class TaskListScreen extends StatelessWidget {
 
               // ── Empty State ───────────────────────────────────────────
               if (provider.tasks.isEmpty)
-                Padding(
-                  padding: const EdgeInsets.all(48),
+                const Padding(
+                  padding: EdgeInsets.all(48),
                   child: Center(
                     child: Column(
                       children: [
-                        const Icon(Icons.task_alt_rounded,
+                        Icon(Icons.task_alt_rounded,
                             size: 64, color: AppColors.textHint),
-                        const SizedBox(height: 12),
-                        const Text('No tasks yet',
+                        SizedBox(height: 12),
+                        Text('No tasks yet',
                             style: TextStyle(color: AppColors.textSecondary)),
                       ],
                     ),
